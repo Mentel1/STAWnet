@@ -1,6 +1,6 @@
-from STAWnet import util
+import util
 import argparse
-from STAWnet.model import *
+from model import *
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt

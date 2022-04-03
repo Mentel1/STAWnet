@@ -2,8 +2,8 @@ import torch
 import numpy as np
 import argparse
 import time
-from STAWnet import util
-from STAWnet.engine import trainer
+import util
+from engine import trainer
 from torch.utils.tensorboard import SummaryWriter
 
 parser = argparse.ArgumentParser()
@@ -23,7 +23,7 @@ parser.add_argument('--batch_size',type=int,default=64,help='batch size')
 parser.add_argument('--learning_rate',type=float,default=0.001,help='learning rate')
 parser.add_argument('--dropout',type=float,default=0.3,help='dropout rate')
 parser.add_argument('--weight_decay',type=float,default=0.0001,help='weight decay rate')
-parser.add_argument('--epochs',type=int,default=100,help='')
+parser.add_argument('--epochs',type=int,default=1,help='')
 parser.add_argument('--print_every',type=int,default=50,help='')
 #parser.add_argument('--seed',type=int,default=99,help='random seed')
 parser.add_argument('--save',type=str,default='./garage/PEMS_addrelu',help='save path')
