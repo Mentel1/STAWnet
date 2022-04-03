@@ -17,7 +17,7 @@ parser.add_argument('--randomadj',default=True,help='whether random initialize a
 parser.add_argument('--seq_length',type=int,default=12,help='')
 parser.add_argument('--nhid',type=int,default=32,help='')
 parser.add_argument('--emb_length',type=int,default=16,help='node embedding length')
-parser.add_argument('--in_dim',type=int,default=3 ,help='inputs dimension')
+parser.add_argument('--in_dim',type=int,default=1 ,help='inputs dimension')
 parser.add_argument('--num_nodes',type=int,default=207,help='number of nodes, METR:207, PEMS:325')
 parser.add_argument('--batch_size',type=int,default=64,help='batch size')
 parser.add_argument('--learning_rate',type=float,default=0.001,help='learning rate')
@@ -26,7 +26,7 @@ parser.add_argument('--weight_decay',type=float,default=0.0001,help='weight deca
 parser.add_argument('--epochs',type=int,default=1,help='')
 parser.add_argument('--print_every',type=int,default=50,help='')
 #parser.add_argument('--seed',type=int,default=99,help='random seed')
-parser.add_argument('--save',type=str,default='./garage/PEMS_addrelu',help='save path')
+# parser.add_argument('--save',type=str,default='./model-metr-la',help='save path')
 parser.add_argument('--expid',type=int,default=1,help='experiment id')
 
 args = parser.parse_args()
@@ -165,7 +165,7 @@ def main():
 
     log = 'On average over 12 horizons, Test MAE: {:.4f}, Test MAPE: {:.4f}, Test RMSE: {:.4f}'
     print(log.format(np.mean(amae),np.mean(amape),np.mean(armse)))
-    torch.save(engine.model.state_dict(), args.save+"_exp"+str(args.expid)+"_best_"+str(round(his_loss[bestid],2))+".pth")
+    torch.save(engine.model.state_dict(), "save/" +"_exp"+str(args.expid)+"_best_"+str(round(his_loss[bestid],2))+".pth")
 
 
 
