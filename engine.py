@@ -1,6 +1,6 @@
 import torch.optim as optim
-from STAWnet.model import *
-from STAWnet import util
+from model import *
+import util
 
 class trainer():
     def __init__(self, scaler, in_dim, seq_length, num_nodes, nhid , dropout, lrate, wdecay, device, gat_bool, addaptadj, aptinit, aptonly, emb_length, noapt):
