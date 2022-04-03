@@ -51,8 +51,8 @@ def generate_graph_seq2seq_io_data(
 
 def generate_train_val_test(args):
     seq_length_x, seq_length_y = args.seq_length_x, args.seq_length_y
-    # df = pd.read_hdf(args.traffic_df_filename)
-    df = pd.DataFrame(np.load(args.traffic_df_filename)['data'][:, :, 0])
+    df = pd.read_hdf(args.traffic_df_filename)
+    #df = pd.DataFrame(np.load(args.traffic_df_filename)['data'][:, :, 0])
     # 0 is the latest observed sample.
     x_offsets = np.sort(np.concatenate((np.arange(-(seq_length_x - 1), 1, 1),)))
     # Predict the next one hour
