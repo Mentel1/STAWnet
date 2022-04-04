@@ -26,7 +26,7 @@ parser.add_argument('--weight_decay',type=float,default=0.0001,help='weight deca
 parser.add_argument('--epochs',type=int,default=1,help='')
 parser.add_argument('--print_every',type=int,default=50,help='')
 #parser.add_argument('--seed',type=int,default=99,help='random seed')
-# parser.add_argument('--save',type=str,default='./model-metr-la',help='save path')
+#parser.add_argument('--save',type=str,default='./model-metr-la',help='save path')
 parser.add_argument('--expid',type=int,default=1,help='experiment id')
 
 args = parser.parse_args()
@@ -119,7 +119,7 @@ def main():
 
         log = 'Epoch: {:03d}, Train Loss: {:.4f}, Train MAPE: {:.4f}, Train RMSE: {:.4f}, Valid Loss: {:.4f}, Valid MAPE: {:.4f}, Valid RMSE: {:.4f}, Training Time: {:.4f}/epoch'
         print(log.format(i, mtrain_loss, mtrain_mape, mtrain_rmse, mvalid_loss, mvalid_mape, mvalid_rmse, (t2 - t1)),flush=True)
-        torch.save(engine.model.state_dict(), args.save+"_epoch_"+str(i)+"_"+str(round(mvalid_loss,2))+".pth")
+        torch.save(engine.model.state_dict(), "save/"+"_epoch_"+str(i)+"_"+str(round(mvalid_loss,2))+".pth")
         writer.add_scalars('scalar/test', {'train_loss': mtrain_loss, 'val_loss': mvalid_loss}, i)
     writer.close()
     print("Average Training Time: {:.4f} secs/epoch".format(np.mean(train_time)))
@@ -127,7 +127,7 @@ def main():
 
     #testing
     bestid = np.argmin(his_loss)
-    engine.model.load_state_dict(torch.load(args.save+"_epoch_"+str(bestid+1)+"_"+str(round(his_loss[bestid],2))+".pth"))
+    engine.model.load_state_dict(torch.load("save/"+"_epoch_"+str(bestid+1)+"_"+str(round(his_loss[bestid],2))+".pth"))
 
 
     outputs = []
